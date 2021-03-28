@@ -43,8 +43,8 @@ function ViewUser() {
                  <li className="list-group-item">phone:{user.phone}</li>
 
                  <li className="list-group-item">website:{user.website}</li>
-
-
+                 <li></li>
+                 
              </ul>
 
             
