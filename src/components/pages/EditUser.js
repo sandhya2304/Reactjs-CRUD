@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import {useHistory} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import {useHistory, useParams} from 'react-router-dom';
 import axios from "axios";
 
-function AddUser() {
+function EditUser() {
 
    const [user,setUser] = useState({
         name:"",
@@ -13,6 +13,7 @@ function AddUser() {
    });
 
    let history = useHistory();
+   const {id} = useParams();
 
    const { name, username, email, phone, website } = user;
 
@@ -22,13 +23,23 @@ function AddUser() {
 
    const onSubmit= async e =>{
        e.preventDefault();
-       await axios.post("http://localhost:3033/users",user);
+       await axios.put(`http://localhost:3033/users/${id}`,user);
        history.push('/');
+   }
+
+   useEffect(() =>{
+       loadUser();
+   },[]);
+
+   const loadUser = async () =>{
+       const result = await axios.get(`http://localhost:3033/users/${id}`);
+       setUser(result.data);
+
    }
 
     return (
     <div className="container w-50 mx-auto shadow p-5">
-        <h1 className="text-center " >Add User</h1>
+        <h1 className="text-center " >Edit User</h1>
         <hr/>
         <form onSubmit={e => onSubmit(e)}>
             <div class="form-group">
@@ -81,12 +92,12 @@ function AddUser() {
                 
             </div>
             <button type="submit" 
-                class="btn btn-primary btn-block">
-                    Add user
+                class="btn btn-warning btn-block">
+                    Update user
             </button>
         </form>
         </div>
     )
 }
 
-export default AddUser
+export default EditUser;
