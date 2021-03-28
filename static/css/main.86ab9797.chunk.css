@@ -1,0 +1,2 @@
+.notfound{width:100vw;height:100vh;background-color:red;display:-webkit-flex;display:flex;-webkit-justify-content:center;justify-content:center}.notfound,.split{position:fixed;top:0}.split{height:100%;width:50%;z-index:1;overflow-x:hidden;padding-top:20px}.left{left:0;background-color:#fff}.right{right:0;background-color:red}.centered{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);text-align:center}.centered img{width:150px;border-radius:50%}
+/*# sourceMappingURL=main.86ab9797.chunk.css.map */
